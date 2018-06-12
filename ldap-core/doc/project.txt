@@ -1,0 +1,90 @@
+【项目信息】
+项目名称 : ldap
+中文名称 : Lightweight Directory Access Protocol
+项目版本 : version 1.0
+
+主要技术 : 
+
+项目描述 : 
+
+项目备注 : 
+
+【项目规划】
+LDAP  (Ligthweight Directory Access Protocol)
+
+参考文章
+https://www.jianshu.com/p/7e4d99f6baaf
+
+1.搭建LDAP服务器
+Open LDAP
+windows安装版本
+https://www.userbooster.de/download/openldap-for-windows.aspx
+
+2.安装LDAP Windows客户端
+客户端下载 Apache Directory Studio
+http://directory.apache.org/studio/downloads.html
+
+3.LDAP基础编程
+
+4.JDBC
+
+5.JDNI
+
+6.域验证
+
+7.集成Spring
+
+8.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1)
+
+2)
+
+3)
+
+4)
+
+5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
