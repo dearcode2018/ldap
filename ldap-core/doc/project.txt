@@ -34,12 +34,31 @@ http://directory.apache.org/studio/downloads.html
 
 7.集成Spring
 
-8.
+8.客户端命令
+在windows下，使用，把D:\software\OpenLDAP\ClientTools加到PATH变量，打开cmd
+直接在命令行下操作.
+ldapadd 选项 ldif文件. 选项: 
+-x 简单认证
+-D 服务器dn
+-h 服务器地址
+-W dn密码
+-f ldif文件路径
+示例: ldapadd -x -D "cn=Manager, dc=hua, dc=com" -W secret -f hua.com.ldif
 
+ldapdelete
+只能删除叶子节点，节点下还有节点则不能删除.
 
+ldapmodify
 
+ldapsearch 选项 过滤 属性值
+-x 简单认证
+-D 服务器dn
+-h 服务器地址
+-W dn密码
+-b 查询的根节点
 
-
+slapcat -l 表示导出为ldif文件
+slapcat -l xx.ldif
 
 
 
@@ -53,7 +72,7 @@ http://directory.apache.org/studio/downloads.html
 
 
 1)
-
+ldapadd -x  -D "cn=Manager,dc=maxcrc,dc=com" -w secret -f test.ldif
 2)
 
 3)

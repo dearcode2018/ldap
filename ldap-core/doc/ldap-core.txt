@@ -7,26 +7,61 @@ https://www.cnblogs.com/yjd_hycf_space/p/7994597.html
 1) Entry
 条目，记录项，是LDAP中最基本的颗粒，类似数据库中的记录. 通常对LDAP
 的增删改查都是以条目为基本对象.
-dn: 每个条目都有一个唯一的标志名(Distinguished Name)
+dn: 每个条目都有一个唯一的标志名(Distinguished Name) 描述一条数据的详细路径
 例如 dn: "cn=baby, ou=marketing, ou=people, dc=mydomain, dc=com/org" 
 通过dn的层次语法结构，可以方便地表示出条目在LDAP树中的位置，通常
 用于检索.
 rdn: 指dn逗号最左边的部分，例如cn=body.
 base dn: LDAP目录树的最顶部就是根，例如 dc=mydomain,dc=com
 
+
 2) Attribute
 条目的属性，key/values，一个属性可以有多个值.
+c: Country 国家
+cn: Common Name 对象的名称，若指人则是全名.
+dc: Domain Component 域名组成部分
+givenName: 人的名字，不含姓氏
+l: Location 地名
+mail: 邮箱
+o: Organization 组织
+ou: OrganizationUnit 组织单元的名称
+sn: surname 姓氏
+telephoneNumber: 电话号码，含国家代码
+uid: userId 用户登录名
+注意，objectClass是一个特殊的属性.
+
 
 3) ObjectClass
 对象类是属性的集合.
+一个条目至少包含一个objectClass属性，每个值作为条目存储数据的模板，
+模板中包含一个条目必填属性和可选属性.
+ObjectClass分类
+A. 结构型: 例如 person和organizationUnit
+B. 辅助型: 例如 extensibleObject
+C. 抽象型: 不能直接使用，例如top.
 
+4) LDIF (Ldap Data Interchange Format 数据交换格式)
+LDIF文件: LDIF用文本格式表示目录数据库的信息，以方便用户创建、阅读、修改.
+文件内容格式:
+# 注释
+dn: 条目名，整树唯一
+属性:值，属性有多个值，则另起一行 也是 属性:值 这种格式.
+一个LDIF文件包含多个条目，每个条目用空行隔开.
+书写要求: 冒号后面加一空格，每行结束处不能有空格符.
 
+5) 新增条目
+ldapadd
+6) 删除条目
+ldapdelete
+7) 修改条目
+交互式修改，通过命令修改
+通过文件修改，创建一个ldif文件，推荐使用文件来修改条目.
+ldapmodify -x -D "" -w secret -f xxModify.ldif
+8) 查询条目
+ldapsearch
 
-
-
-
-
-
+9) 导出条目
+ldapcat
 
 
 

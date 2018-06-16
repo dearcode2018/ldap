@@ -1,0 +1,22 @@
+
+JNDI
+Java Naming and Directory Interface 命名和目录接口
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
