@@ -68,6 +68,192 @@ public final class JndiTest extends BaseTest {
 	 * @author qianye.zheng
 	 */
 	@Test
+	public void testAdd()
+	{
+		String root = "dc=maxcrc,dc=com";
+		
+		// 环境参数
+		Hashtable<String, String> envTable = new Hashtable<String, String>();
+		envTable.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		envTable.put(Context.PROVIDER_URL, "ldap://127.0.0.1:389/" + root);
+		envTable.put(Context.SECURITY_AUTHENTICATION, "simple");
+		// 设置进入的目录识别名dn
+		envTable.put(Context.SECURITY_PRINCIPAL, "cn=Manager,dc=maxcrc,dc=com");
+		// 进入目录的密码
+		envTable.put(Context.SECURITY_CREDENTIALS, "secret");
+		//envTable.put("filter", routFilter);
+		try
+		{
+			// 目录上下文
+			DirContext dirContext = new InitialDirContext(envTable);
+			String name = null;
+		} catch (Exception e)
+		{
+			log.error("testAdd =====> ", e);
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @description 查找jndi
+	 * @author qianye.zheng
+	 */
+	@Test
+	public void testDelete()
+	{
+		String routFilter = "";
+		
+		// 环境参数
+		Hashtable<String, String> envTable = new Hashtable<String, String>();
+		envTable.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		envTable.put(Context.PROVIDER_URL, "ldap://127.0.0.1:389");
+		envTable.put(Context.SECURITY_AUTHENTICATION, "simple");
+		// 设置进入的目录识别名dn
+		envTable.put(Context.SECURITY_PRINCIPAL, "cn=Manager,dc=maxcrc,dc=com");
+		// 进入目录的密码
+		envTable.put(Context.SECURITY_CREDENTIALS, "secret");
+		//envTable.put("filter", routFilter);
+		try
+		{
+			// 目录上下文
+			DirContext dirContext = new InitialDirContext(envTable);
+			String name = null;
+			name = "ou=People,dc=maxcrc,dc=com";
+			name = "dc=maxcrc,dc=com";
+			NamingEnumeration<Binding> bindings = dirContext.listBindings(name);
+			Binding binding = null;
+			LdapContext ldapCtx = null;
+			Attributes attributes = null;
+			while (bindings.hasMore())
+			{
+				binding = bindings.next();
+				System.out.println(binding.getName() + ": " + binding.getObject());
+				ldapCtx = (LdapContext)  binding.getObject();
+/*				attributes = ldapCtx.getAttributes("cn");
+				NamingEnumeration<Attribute> attributeEnums = (NamingEnumeration<Attribute>) attributes.getAll();
+				Attribute attribute = null;
+				while (attributeEnums.hasMore())
+				{
+					attribute = attributeEnums.next();
+					System.out.println(attribute.getID() + ": " + attribute.get());
+				}*/
+			}
+			
+			
+		} catch (Exception e)
+		{
+			log.error("testDelete =====> ", e);
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @description 查找jndi
+	 * @author qianye.zheng
+	 */
+	@Test
+	public void testUpdate()
+	{
+		String routFilter = "";
+		
+		// 环境参数
+		Hashtable<String, String> envTable = new Hashtable<String, String>();
+		envTable.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		envTable.put(Context.PROVIDER_URL, "ldap://127.0.0.1:389");
+		envTable.put(Context.SECURITY_AUTHENTICATION, "simple");
+		// 设置进入的目录识别名dn
+		envTable.put(Context.SECURITY_PRINCIPAL, "cn=Manager,dc=maxcrc,dc=com");
+		// 进入目录的密码
+		envTable.put(Context.SECURITY_CREDENTIALS, "secret");
+		//envTable.put("filter", routFilter);
+		try
+		{
+			// 目录上下文
+			DirContext dirContext = new InitialDirContext(envTable);
+			String name = null;
+			name = "ou=People,dc=maxcrc,dc=com";
+			name = "dc=maxcrc,dc=com";
+			NamingEnumeration<Binding> bindings = dirContext.listBindings(name);
+			Binding binding = null;
+			LdapContext ldapCtx = null;
+			Attributes attributes = null;
+			while (bindings.hasMore())
+			{
+				binding = bindings.next();
+				System.out.println(binding.getName() + ": " + binding.getObject());
+				ldapCtx = (LdapContext)  binding.getObject();
+/*				attributes = ldapCtx.getAttributes("cn");
+				NamingEnumeration<Attribute> attributeEnums = (NamingEnumeration<Attribute>) attributes.getAll();
+				Attribute attribute = null;
+				while (attributeEnums.hasMore())
+				{
+					attribute = attributeEnums.next();
+					System.out.println(attribute.getID() + ": " + attribute.get());
+				}*/
+			}
+			
+			
+		} catch (Exception e)
+		{
+			log.error("testUpdate =====> ", e);
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @description 查找jndi
+	 * @author qianye.zheng
+	 */
+	@Test
+	public void testQuery()
+	{
+		String root = "dc=maxcrc,dc=com";
+		
+		// 环境参数
+		Hashtable<String, String> envTable = new Hashtable<String, String>();
+		envTable.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		envTable.put(Context.PROVIDER_URL, "ldap://127.0.0.1:389/" + root);
+		envTable.put(Context.SECURITY_AUTHENTICATION, "simple");
+		// 设置进入的目录识别名dn
+		envTable.put(Context.SECURITY_PRINCIPAL, "cn=Manager,dc=maxcrc,dc=com");
+		// 进入目录的密码
+		envTable.put(Context.SECURITY_CREDENTIALS, "secret");
+		//envTable.put("filter", routFilter);
+		try
+		{
+			// 目录上下文
+			DirContext dirContext = new InitialDirContext(envTable);
+			String name = null;
+			//name = "ou=People,dc=maxcrc,dc=com";
+			name = "dc=maxcrc,dc=com";
+			name = "ou=People";
+			name = "ou";
+			NamingEnumeration<Binding> bindings = dirContext.listBindings(name);
+			Binding binding = null;
+			LdapContext ldapCtx = null;
+			Attributes attributes = null;
+			Attribute attribute = null;
+			while (bindings.hasMore())
+			{
+				binding = bindings.next();
+				System.out.println(binding.getName() + ": " + binding.getObject());
+			}
+		} catch (Exception e)
+		{
+			log.error("testQuery =====> ", e);
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @description 查找jndi
+	 * @author qianye.zheng
+	 */
+	@Test
 	public void jndiLookup()
 	{
 		String routFilter = "";
@@ -113,8 +299,6 @@ public final class JndiTest extends BaseTest {
 		{
 			log.error("jndiLookup =====> ", e);
 		}
-		
-		
 		
 	}
 	

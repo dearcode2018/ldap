@@ -64,6 +64,11 @@ ldapsearch
 ldapcat
 
 
+安全模型
+1.ACL (Access Control List 访问控制列表)
+LDAP允许使用ACL控制数据的读写权限.
+
+
 
 
 
