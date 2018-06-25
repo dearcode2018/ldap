@@ -1,0 +1,23 @@
+ldap-spring
+
+ODM (Object-Directory Mapping) 对象目录映射
+建立目录树和对象的映射关系，在进行CRUD的时候就可以根据映射来转化.
+
+注解
+@Entry 标注实体类
+@Id 指明实体DN
+@Attribute 标注映射的字段
+@DnAttribute
+@Transient 忽略的字段
+
+
+
+
+
+
+
+
+
+
+
+

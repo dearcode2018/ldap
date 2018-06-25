@@ -37,6 +37,17 @@ public class LdapConfiguration
 	
 	private LdapTemplate ldapTemplate;
 
+	/*
+	 * LdapContextSource上下文源，类似ORM的SessionFactory
+	 * 
+	 * LdapTemplate 类似ORM的JdbcTemplate
+	 * 
+	 * 伪事务支持
+	 * 
+	 * 注解: @Entry @Attribute @Id
+	 * 
+	 */
+	
 	/**
 	 * 
 	 * @description 
