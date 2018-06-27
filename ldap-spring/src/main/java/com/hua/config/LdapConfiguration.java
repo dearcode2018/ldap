@@ -65,8 +65,10 @@ public class LdapConfiguration
 		contextSource.setBase(baseDc);
 		contextSource.setUserDn(username);
 		contextSource.setPassword(password);
+		// 当需要连接时，池是否创建新连接
 		contextSource.setPooled(true);
 		contextSource.setBaseEnvironmentProperties(config);
+		contextSource.afterPropertiesSet();
 		
 		return contextSource;
 	}

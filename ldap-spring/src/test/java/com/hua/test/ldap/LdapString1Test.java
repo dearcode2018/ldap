@@ -1,6 +1,6 @@
 /**
  * 描述: 
- * LdapStringTest.java
+ * LdapString1Test.java
  * 
  * @author qye.zheng
  *  version 1.0
@@ -31,19 +31,23 @@ import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
+import org.springframework.ldap.query.LdapQuery;
+import org.springframework.ldap.query.LdapQueryBuilder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.hua.entity.Person;
 import com.hua.entity.User;
 import com.hua.mapper.UserMapper;
 import com.hua.test.BaseTest;
+import com.hua.util.JacksonUtil;
 
 
 /**
  * 描述: 
  * 
  * @author qye.zheng
- * LdapStringTest
+ * LdapString1Test
  */
 /*
  * 
@@ -53,8 +57,8 @@ import com.hua.test.BaseTest;
 // for Junit 4.x
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = {"classpath:conf/xml/applicationContext.xml"})
-@ContextConfiguration(locations = {"classpath:conf/xml/spring-config.xml", "classpath:conf/xml/spring-ldap.xml"})
-public final class LdapStringTest extends BaseTest {
+@ContextConfiguration(locations = {"classpath:conf/xml/spring-config.xml", "classpath:conf/xml/spring-ldap1.xml"})
+public final class LdapString1Test extends BaseTest {
 
 	/**
 	 * 引当前项目用其他项目之后，然后可以使用
@@ -143,6 +147,31 @@ public final class LdapStringTest extends BaseTest {
 			
 		} catch (Exception e) {
 			log.error("testList =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testQuery() {
+		try {
+			LdapQuery query = null;
+			Person entity = null;
+			
+			query = LdapQueryBuilder.query().where("ou").is("ZhengQianYe");
+			entity = ldapTemplate.findOne(query, Person.class);
+			System.out.println(JacksonUtil.writeAsString(entity));
+			
+			query = LdapQueryBuilder.query().where("ou").is("ZhengQianYe2");
+			entity = ldapTemplate.findOne(query, Person.class);
+			System.out.println(JacksonUtil.writeAsString(entity));
+			
+		} catch (Exception e) {
+			log.error("testQuery =====> ", e);
 		}
 	}
 	
