@@ -24,6 +24,7 @@ import java.util.Hashtable;
 
 import javax.naming.Binding;
 import javax.naming.Context;
+import javax.naming.NameClassPair;
 import javax.naming.NamingEnumeration;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
@@ -210,8 +211,7 @@ public final class JndiTest extends BaseTest {
 	@Test
 	public void testQuery()
 	{
-		String root = "dc=maxcrc,dc=com";
-		
+		final String root = "dc=maxcrc,dc=com";
 		// 环境参数
 		Hashtable<String, String> envTable = new Hashtable<String, String>();
 		envTable.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
@@ -227,19 +227,23 @@ public final class JndiTest extends BaseTest {
 			// 目录上下文
 			DirContext dirContext = new InitialDirContext(envTable);
 			String name = null;
-			//name = "ou=People,dc=maxcrc,dc=com";
-			name = "dc=maxcrc,dc=com";
-			name = "ou=People";
-			name = "ou";
+			name = "ou=TianHe";
 			NamingEnumeration<Binding> bindings = dirContext.listBindings(name);
 			Binding binding = null;
-			LdapContext ldapCtx = null;
+			LdapContext ldapContext = null;
 			Attributes attributes = null;
 			Attribute attribute = null;
 			while (bindings.hasMore())
 			{
 				binding = bindings.next();
-				System.out.println(binding.getName() + ": " + binding.getObject());
+				ldapContext = (LdapContext) binding.getObject();
+				System.out.println(binding.getName() + ": " + ldapContext);
+				attributes = ldapContext.getAttributes("cn");
+				NamingEnumeration<String> ids = attributes.getIDs();
+				while (ids.hasMore())
+				{
+					System.out.println(attributes.get(ids.next()));
+				}
 			}
 		} catch (Exception e)
 		{
