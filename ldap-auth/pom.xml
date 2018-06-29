@@ -6,9 +6,9 @@
 		<artifactId>ldap-entire</artifactId>
 		<version>0.0.1</version>
 	</parent>	
-	<artifactId>ldap-verify</artifactId>
+	<artifactId>ldap-auth</artifactId>
 	<packaging>jar</packaging>
-	<name>ldap-verify</name>
+	<name>ldap-auth</name>
 	<properties>
 			
 	</properties>

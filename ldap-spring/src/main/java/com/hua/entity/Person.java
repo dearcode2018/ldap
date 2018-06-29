@@ -32,7 +32,7 @@ public final class Person
 	@Id
 	private Name dn;
 	
-	@Attribute(name = "cn")
+	@Attribute(name = "cn" )
 	/*  */
 	//@DnAttribute(value = "cn", index = 0)
 	private String fullName;

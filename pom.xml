@@ -16,7 +16,7 @@
 		<module>ldap-spring</module>
 		<module>ldap-jdbc</module>
 		<module>ldap-jndi</module>
-		<module>ldap-verify</module>
+		<module>ldap-auth</module>
 	</modules>
  
 	<!-- 公共属性 -->
